@@ -1,6 +1,7 @@
-fout = open('io/rand31.txt', 'w')
+import random
 
-for i in range(10000, 0, -1):
-    fout.write(str(i)+'\n')
+fout = open('io/rand31.txt', 'w')
+for i in range(0, 30000):
+    fout.write(str(random.randint(0, 1000))+'\n')
 
 fout.close()

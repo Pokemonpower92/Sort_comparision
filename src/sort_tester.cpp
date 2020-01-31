@@ -20,9 +20,10 @@ int main(int argc, char** argv){
       // Average for each sort type.
       chrono::duration<double> stl_average;
       chrono::duration<double> merge_average;
-      chrono::duration<double> quick_average;
+      // TODO Need to implement a quicksort.
+      //chrono::duration<double> quick_average;
       chrono::duration<double> insertion_average;
-      chrono::duration<double> selction_average;
+      chrono::duration<double> selection_average;
 
       sprintf(outfile, "./benchmarking/time%d.txt", i);
 
@@ -55,20 +56,72 @@ int main(int argc, char** argv){
         }
 
         to_sort = data;
-        // Sort the file with merge sort.
+        fin.close();
+
+        // Done reading the input file. Time to run each
+        // sorting implementation on the data.
+
+        // For merge.
         chrono::time_point<chrono::system_clock> start, end;
         start = chrono::system_clock::now();
         m_sort(data, ret, 0, data.size());
         end = chrono::system_clock::now();
 
+        // Calculate the time (in seconds) to do merge.
         chrono::duration<double> interval = end-start;
 
-        cout << interval.count() << endl;
         merge_average += interval;
-        fin.close();
+
+        // For stl sort.
+        to_sort = data;
+
+
+        start = chrono::system_clock::now();
+        sort(to_sort.begin(), to_sort.end());
+        end = chrono::system_clock::now();
+
+        // Calculate the time (in seconds) to do stl.
+        interval = end-start;
+
+        stl_average += interval;
+
+        // For insertion sort.
+        to_sort = data;
+
+        start = chrono::system_clock::now();
+        i_sort(to_sort);
+        end = chrono::system_clock::now();
+        // Calculate the time (in seconds) to do insertion.
+        interval = end-start;
+
+        insertion_average += interval;
+
+        // For selection sort.
+        to_sort = data;
+
+        start = chrono::system_clock::now();
+        s_sort(to_sort);
+        end = chrono::system_clock::now();
+
+        // Calculate the time (in seconds) to do selection.
+        interval = end-start;
+
+        selection_average += interval;
+
       }
-      cout << "Merge Average: " << merge_average.count()/5 << endl;
-      // Divide each average by five and write them to outfile.
+
+      // Build the outfile.
+      fout << stl_average.count()/5 << endl;
+      fout << merge_average.count()/5 << endl;
+      fout << insertion_average.count()/5 << endl;
+      fout << selection_average.count()/5 << endl;
+
+      cout << "STL: " << stl_average.count()/5 << endl;
+      cout << "Merge: " << merge_average.count()/5 << endl;
+      cout << "Insertion: " << insertion_average.count()/5 << endl;
+      cout << "Selection: " << selection_average.count()/5 << endl;
+
+
       fout.close();
     }
 

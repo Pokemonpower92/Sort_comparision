@@ -19,6 +19,7 @@ OBJECTS= $(patsubst %, $(ODIR)/%, $(SRCS:.cpp=.o))
 
 # Make everything
 all: $(PROGRAMS)
+	python scripts/gen.py
 
 
 clean:
