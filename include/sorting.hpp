@@ -4,22 +4,20 @@
 
 using namespace std;
 
+
+
 template <class T>
-void s_sort(vector<T> &vec);
+void merge(vector<T> &vec, vector<T> &ret, size_t start, size_t mid, size_t size);
+template <class T>
+void m_sort(vector<T> &vec, vector<T> &ret, size_t start, size_t size);
 
 template <class T>
 void i_sort(vector<T> &vec);
 
-template <class T>
-size_t sort_helper(vector<T> &vec, size_t index);
 
-template <class T>
-void q_sort(vector<T> &vec);
-
-template <class T>
-void q_sort(vector<T> &vec){
-  
-}
+// Future implementation.
+//template <class T>
+//void q_sort(vector<T> &vec);
 
 // Merges two subarrays of vec back into place in vec.
 template <class T>
@@ -103,29 +101,6 @@ void m_sort(vector<T> &vec, vector<T> &ret, size_t start, size_t size){
 
       return;
     }
-}
-
-template <class T>
-void s_sort(vector<T> &vec){
-  for(size_t i = 0; i < vec.size()-1; i++){
-    size_t min = sort_helper(vec, i);
-    if(vec[min] < vec[i]){
-      T swap_val = vec[min];
-      vec[min] = vec[i];
-      vec[i] = swap_val;
-    }
-  }
-}
-
-template <class T>
-size_t sort_helper(vector<T> &vec, size_t index){
-  size_t min = index;
-
-  for(size_t i = index+1; i < vec.size(); i++){
-    if( vec[i] < vec[min] ) min = i;
-  }
-
-  return min;
 }
 
 template <class T>

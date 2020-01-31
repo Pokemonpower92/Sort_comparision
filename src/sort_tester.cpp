@@ -1,3 +1,23 @@
+/*
+    C++ protocol for testing the time to sort multiple input sizes for
+    generic sorting algorithms.
+
+    Sorting times for three differing arrays of random numbers are averaged
+    for each input size.
+
+    This averaged sorting time is stored in a file (for each input size) like so:
+
+    [stl_average]
+    [merge_average]
+    [insertion_average]
+
+    With each average on its on line and given in seconds.
+
+
+    ##TODO-
+      - Implement a quicksort in sorting.hpp
+*/
+
 #include "sorting.hpp"
 #include <iostream>
 #include <cstdio>
@@ -9,10 +29,10 @@
 using namespace std;
 
 int main(int argc, char** argv){
-    // Average the time to sort five random input files of size
-    // 10^3 10^4 10^5 10^6 10^7 for each sort
 
-    // For each input size
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    // For each input size we create a file that holds each averaged runtime
+    // on a new line.
     for(int i = 1; i != 8; i++){
       ofstream fout;
       char outfile[100];
@@ -20,11 +40,8 @@ int main(int argc, char** argv){
       // Average for each sort type.
       chrono::duration<double> stl_average;
       chrono::duration<double> merge_average;
-      // TODO Need to implement a quicksort.
-      //chrono::duration<double> quick_average;
       chrono::duration<double> insertion_average;
-      chrono::duration<double> selection_average;
-
+      //chrono::duration<double> quick_average;
       sprintf(outfile, "./benchmarking/time%d.txt", i);
 
       fout.open(outfile);
@@ -32,17 +49,17 @@ int main(int argc, char** argv){
         perror(outfile);
       }
 
-
-      // For each file for that size
+      printf("Generating file: %d\n", i);
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      // For each file for that size we need to add the runtime for each random
+      // input to the running total of runtime for that sort.
       for(int j = 1; j != 4; j++){
         ifstream fin;
         char infile[100];
         int num;
         vector<int> data;
-        // this is the vector we sort.
         vector<int> to_sort;
-        // temp vector for merge_sort
-        vector<int> ret;
+
         sprintf(infile, "./io/rand%d%d.txt", i, j);
 
         fin.open(infile);
@@ -58,13 +75,14 @@ int main(int argc, char** argv){
         to_sort = data;
         fin.close();
 
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         // Done reading the input file. Time to run each
         // sorting implementation on the data.
 
         // For merge.
         chrono::time_point<chrono::system_clock> start, end;
         start = chrono::system_clock::now();
-        m_sort(data, ret, 0, data.size());
+        m_sort(data, to_sort, 0, data.size());
         end = chrono::system_clock::now();
 
         // Calculate the time (in seconds) to do merge.
@@ -72,6 +90,7 @@ int main(int argc, char** argv){
 
         merge_average += interval;
 
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         // For stl sort.
         to_sort = data;
 
@@ -85,6 +104,7 @@ int main(int argc, char** argv){
 
         stl_average += interval;
 
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         // For insertion sort.
         to_sort = data;
 
@@ -96,32 +116,28 @@ int main(int argc, char** argv){
 
         insertion_average += interval;
 
-        // For selection sort.
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        /*
+        // Placeholder for quicksort.
         to_sort = data;
 
         start = chrono::system_clock::now();
-        s_sort(to_sort);
+        quick_sort(to_sort);
         end = chrono::system_clock::now();
 
         // Calculate the time (in seconds) to do selection.
         interval = end-start;
 
-        selection_average += interval;
-
+        quick_average += interval;
+        */
       }
-
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
       // Build the outfile.
       fout << stl_average.count()/3 << endl;
       fout << merge_average.count()/3 << endl;
       fout << insertion_average.count()/3 << endl;
-      fout << selection_average.count()/3 << endl;
+      //fout << quick_average.count()/3 << endl;
 
-      cout << "Run: " << i << endl;
-      cout << "STL: " << stl_average.count()/3 << endl;
-      cout << "Merge: " << merge_average.count()/3 << endl;
-      cout << "Insertion: " << insertion_average.count()/3 << endl;
-      cout << "Selection: " << selection_average.count()/3 << endl;
-      cout << endl;
 
       fout.close();
     }
