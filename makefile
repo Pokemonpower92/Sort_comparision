@@ -19,8 +19,6 @@ OBJECTS= $(patsubst %, $(ODIR)/%, $(SRCS:.cpp=.o))
 
 # Make everything
 all: $(PROGRAMS)
-	python scripts/gen.py
-
 
 clean:
 	rm -f $(PROGRAMS) $(OBJECTS)
@@ -30,3 +28,6 @@ obj/%.o: src/%.cpp
 
 bin/sort_tester: $(OBJECTS)
 	$(CC) $(CFLAGS) -I$(IDIR) -o $(PROGRAMS) $(OBJECTS)
+
+numbers:
+	python scripts/gen.py

@@ -1,7 +1,14 @@
+# Generates the random input files
+# for benchmarking
+
 import random
 
-fout = open('io/rand31.txt', 'w')
-for i in range(0, 30000):
-    fout.write(str(random.randint(0, 1000))+'\n')
+j = 1
 
-fout.close()
+while j < 8:
+    for x in range(1, 4):
+        fout = open('io/rand'+str(j)+str(x)+'.txt', 'w')
+        for y in range(5**j):
+                fout.write(str(random.randint(0, 1000))+'\n')
+        fout.close()
+    j+=1

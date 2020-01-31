@@ -13,7 +13,7 @@ int main(int argc, char** argv){
     // 10^3 10^4 10^5 10^6 10^7 for each sort
 
     // For each input size
-    for(int i = 3; i != 4; i++){
+    for(int i = 1; i != 8; i++){
       ofstream fout;
       char outfile[100];
 
@@ -34,7 +34,7 @@ int main(int argc, char** argv){
 
 
       // For each file for that size
-      for(int j = 1; j != 6; j++){
+      for(int j = 1; j != 4; j++){
         ifstream fin;
         char infile[100];
         int num;
@@ -43,9 +43,9 @@ int main(int argc, char** argv){
         vector<int> to_sort;
         // temp vector for merge_sort
         vector<int> ret;
-        //sprintf(infile, "./io/rand%d%d.txt", i, j);
+        sprintf(infile, "./io/rand%d%d.txt", i, j);
 
-        fin.open("./io/rand31.txt");
+        fin.open(infile);
         if(fin.fail()){
           perror(infile);
         }
@@ -111,16 +111,17 @@ int main(int argc, char** argv){
       }
 
       // Build the outfile.
-      fout << stl_average.count()/5 << endl;
-      fout << merge_average.count()/5 << endl;
-      fout << insertion_average.count()/5 << endl;
-      fout << selection_average.count()/5 << endl;
+      fout << stl_average.count()/3 << endl;
+      fout << merge_average.count()/3 << endl;
+      fout << insertion_average.count()/3 << endl;
+      fout << selection_average.count()/3 << endl;
 
-      cout << "STL: " << stl_average.count()/5 << endl;
-      cout << "Merge: " << merge_average.count()/5 << endl;
-      cout << "Insertion: " << insertion_average.count()/5 << endl;
-      cout << "Selection: " << selection_average.count()/5 << endl;
-
+      cout << "Run: " << i << endl;
+      cout << "STL: " << stl_average.count()/3 << endl;
+      cout << "Merge: " << merge_average.count()/3 << endl;
+      cout << "Insertion: " << insertion_average.count()/3 << endl;
+      cout << "Selection: " << selection_average.count()/3 << endl;
+      cout << endl;
 
       fout.close();
     }
