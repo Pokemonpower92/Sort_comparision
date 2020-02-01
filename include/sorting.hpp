@@ -14,6 +14,10 @@ void m_sort(vector<T> &vec, vector<T> &ret, size_t start, size_t size);
 template <class T>
 void i_sort(vector<T> &vec);
 
+template <class T>
+void s_sort(vector<T> &vec);
+template <class T>
+size_t sort_helper(vector<T> &vec, size_t index);
 
 // Future implementation.
 //template <class T>
@@ -103,6 +107,7 @@ void m_sort(vector<T> &vec, vector<T> &ret, size_t start, size_t size){
     }
 }
 
+// Generic Insertion sort implementation
 template <class T>
 void i_sort(vector<T> &vec){
   for(size_t i = 0; i < vec.size()-1; i++){
@@ -119,4 +124,28 @@ void i_sort(vector<T> &vec){
       else continue;
     }
   }
+}
+
+// The following two are selection sort and a helper.
+template <class T>
+void s_sort(vector<T> &vec){
+  for(size_t i = 0; i < vec.size()-1; i++){
+    size_t min = sort_helper(vec, i);
+    if(vec[min] < vec[i]){
+      T swap_val = vec[min];
+      vec[min] = vec[i];
+      vec[i] = swap_val;
+    }
+  }
+}
+
+template <class T>
+size_t sort_helper(vector<T> &vec, size_t index){
+  size_t min = index;
+
+  for(size_t i = index+1; i < vec.size(); i++){
+    if( vec[i] < vec[min] ) min = i;
+  }
+
+  return min;
 }

@@ -5,10 +5,15 @@ import random
 
 j = 1
 
-while j < 151:
+fout = open('io/rand_input.txt', 'w')
+
+while j < 501:
     for x in range(1, 3):
-        fout = open('io/rand'+str(j)+str(x)+'.txt', 'w')
-        for y in range(j**2):
-                fout.write(str(random.randint(0, 1000))+'\n')
-        fout.close()
+        for y in range(j*10):
+                if y != j*10 - 1:
+                    fout.write(str(random.randint(0, 1000))+' ')
+                else:
+                    fout.write(str(random.randint(0, 1000))+' \n')
     j+=1
+
+fout.close()

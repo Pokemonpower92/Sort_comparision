@@ -32,5 +32,11 @@ bin/sort_tester: $(OBJECTS)
 	$(CC) $(CFLAGS) -I$(IDIR) -o $(PROGRAMS) $(OBJECTS)
 
 files:
-	python scripts/gen.py
+	python3 scripts/gen.py
 	./bin/sort_tester
+
+graph:
+	python3 scripts/plot.py
+
+new_graph:
+	bash scripts/new_graph.sh
