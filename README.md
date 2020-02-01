@@ -19,3 +19,8 @@ To compile:
 
    Fig 2. Characteristic Better Performance of Insertion on smaller input sizes
    ![](https://github.com/Pokemonpower92/Sort_comparision/blob/master/graphs/Figure_2.png)
+
+## TODO
+
+Implement quicksort for c++
+Implement data generation program for python sorting implementations.
