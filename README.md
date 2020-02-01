@@ -1,6 +1,6 @@
 # Sort_comparision
 Compares various sorting algorithms between python and c++ implementations
-over an input range of 10 to 5000 elements.
+over an input range of 10 to 7000 elements.
 
 Three random sets of each interval are averaged to increase stochasticity.  
   
