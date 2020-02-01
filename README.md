@@ -18,5 +18,5 @@ To compile:
 
 
 ## TODO 
-   -\ Implement a c++ quicksort to replace the STL algorithm.
-   -\ Write the python implementation of the data generator.
+   Implement a c++ quicksort to replace the STL algorithm.  
+   Write the python implementation of the data generator.  
