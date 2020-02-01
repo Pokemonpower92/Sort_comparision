@@ -10,7 +10,7 @@ C++ implementation done \- Python in production.
 To compile:  
     ``` make``` Compiles the c++ sorting comparision.  
     ``` make files``` generates the time to sort files in benchmarking (provided /benchmarking exists)  
-    ``` make graph``` graphs the current data set.
+    ``` make graph``` graphs the current data set.  
     ``` make new_graph``` generates a new data set then graphs it. 
     
    Fig 1. C++ Sort comparision.
