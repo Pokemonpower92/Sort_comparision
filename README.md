@@ -15,3 +15,8 @@ To compile:
     
    Fig 1. C++ Sort comparision.
    ![](https://github.com/Pokemonpower92/Sort_comparision/blob/master/graphs/Figure_3.png)
+
+
+## TODO 
+   -\ Implement a c++ quicksort to replace the STL algorithm.
+   -\ Write the python implementation of the data generator.
