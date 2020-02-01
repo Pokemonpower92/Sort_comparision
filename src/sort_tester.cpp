@@ -39,7 +39,7 @@ int main(int argc, char** argv){
       perror("./io/rand_input.txt");
     }
 
-    for(int i = 1; i != 501; i++){
+    for(int i = 1; i != 701; i++){
 
       // Average for each sort type.
       chrono::duration<double> stl_average;
@@ -122,10 +122,10 @@ int main(int argc, char** argv){
       }
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
       // Build the vectors for each sorting type..
-      double s = (stl_average.count()*1000)/2.0;
-      double m = (merge_average.count()*1000)/2.0;
-      double is = (insertion_average.count()*1000)/2.0;
-      double sl = (selection_average.count()*1000)/2.0;
+      double s = (stl_average.count())/2.0;
+      double m = (merge_average.count())/2.0;
+      double is = (insertion_average.count())/2.0;
+      double sl = (selection_average.count())/2.0;
 
       stl_times.push_back(s);
       merge_times.push_back(m);

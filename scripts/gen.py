@@ -7,7 +7,7 @@ j = 1
 
 fout = open('io/rand_input.txt', 'w')
 
-while j < 501:
+while j < 701:
     for x in range(1, 3):
         for y in range(j*10):
                 if y != j*10 - 1:

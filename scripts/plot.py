@@ -11,7 +11,7 @@ insertion_cpp = [float(line.rstrip()) for line in i_file]
 selection_cpp = [float(line.rstrip('\n')) for line in sl_file]
 
 # Number of elements
-x_axis = [(x*10) for x in range(1, 501)]
+x_axis = [(x*10) for x in range(1, 701)]
 
 plt.figure(figsize=(8, 5))
 
@@ -20,7 +20,7 @@ plt.plot(x_axis, merge_cpp, label='C Merge')
 plt.plot(x_axis, insertion_cpp, label='C Insertion')
 plt.plot(x_axis, selection_cpp, label='C Selection')
 
-#plt.axis([0, 3000, 0, 1250])
+#plt.axis([0, 4500, 0, 2])
 plt.title('Sorting Algorithm Performance')
 plt.legend()
 plt.ylabel('Time (ms)')
