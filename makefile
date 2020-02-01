@@ -17,7 +17,7 @@ SRCS = sort_tester.cpp
 SOURCES= $(patsubst %, $(SDIR)/%, $(SRCS))
 OBJECTS= $(patsubst %, $(ODIR)/%, $(SRCS:.cpp=.o))
 BENCHMARKING= $(patsubst %, $(BDIR)/%, *.txt)
-IO= $(patsubst %, $(IODIR)%/, *.txt)
+IO= $(patsubst %, $(IODIR)/%, *.txt)
 
 # Make everything
 all: $(PROGRAMS)
