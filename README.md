@@ -4,7 +4,7 @@ over an input range of 1 to 7000 elements.
 
 Three random sets of each interval are averaged to increase stochasticity.  
 
-C++ implementation done \- Python in production.  
+\- Python in production.  
 
 
 # To compile:  
