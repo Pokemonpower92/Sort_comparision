@@ -50,7 +50,7 @@ int main(int argc, char** argv){
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
       // For each input size we have two lines to read then sort.
       // Finally, we average them.
-      for(int j = 1; j != 2; j++){
+      for(int j = 1; j != 3; j++){
         int num;
         vector<int> data;
         vector<int> to_sort;
