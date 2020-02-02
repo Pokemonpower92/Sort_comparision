@@ -1,6 +1,6 @@
 # Sort_comparision
 Compares various sorting algorithms between python and c++ implementations
-over an input range of 10,000 to 100,000 elements.
+over an input range of 1 to 7000 elements.
 
 Three random sets of each interval are averaged to increase stochasticity.  
 
@@ -9,11 +9,12 @@ C++ implementation done \- Python in production.
 
 To compile:  
     ``` make``` Compiles the c++ sorting comparision.  
-    ``` make files``` generates the time to sort files in benchmarking. 
+    ``` make files``` generates the time to sort files in benchmarking.
     ``` make graph``` graphs the current data set.  
     ``` make new_graph``` generates a new data set then graphs it.
-    
-   Dependencies: Matplotlib for graphing.
+
+   # Dependencies:   
+   Matplotlib for graphing.
 
    Fig 1. C++ Sort comparision.
    ![](https://github.com/Pokemonpower92/Sort_comparision/blob/master/graphs/Figure_1.png)  
