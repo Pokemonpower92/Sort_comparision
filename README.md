@@ -22,5 +22,5 @@ To compile:
 
 ## TODO
 
-Implement quicksort for c++
-Implement data generation program for python sorting implementations.
+Implement quicksort for c++  
+Implement data generation program for python sorting implementations.  
