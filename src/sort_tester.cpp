@@ -2,7 +2,7 @@
     C++ protocol for testing the time to sort multiple input sizes for
     generic sorting algorithms.
 
-    Sorting times for three differing arrays of random numbers are averaged
+    Sorting times for two differing arrays of random numbers are averaged
     for each input size.
 
     This averaged sorting time is stored in a file (for each algorithm);
@@ -39,7 +39,7 @@ int main(int argc, char** argv){
       perror("./io/rand_input.txt");
     }
 
-    for(int i = 1; i != 11; i++){
+    for(int i = 1; i != 701; i++){
 
       // Average for each sort type.
       chrono::duration<double> stl_average;
@@ -50,13 +50,13 @@ int main(int argc, char** argv){
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
       // For each input size we have two lines to read then sort.
       // Finally, we average them.
-      for(int j = 1; j != 2; j++){
+      for(int j = 1; j != 3; j++){
         int num;
         vector<int> data;
         vector<int> to_sort;
 
         // Read in the data.
-        for(int z = 0; z != i*10000; z++){
+        for(int z = 0; z != i*10; z++){
             fin >> num;
             data.push_back(num);
         }

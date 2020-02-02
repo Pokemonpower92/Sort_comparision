@@ -19,16 +19,17 @@ void s_sort(vector<T> &vec);
 template <class T>
 size_t sort_helper(vector<T> &vec, size_t index);
 
-
-/*
-
+// Work in progress.
 template <class T>
 void q_sort(vector<T> &vec);
 
 template <class T>
 void qsort_helper();
 
-*/
+template <class T>
+void partition(vector<T> &vec, size_t pivot, size_t &left, size_t &right);
+
+
 
 // Merges two subarrays of vec back into place in vec.
 template <class T>
@@ -157,7 +158,7 @@ size_t sort_helper(vector<T> &vec, size_t index){
   return min;
 }
 
-/*
+
 // WIP
 template <class T>
 void q_sort(vector<T> &vec){
@@ -165,12 +166,13 @@ void q_sort(vector<T> &vec){
   return;
 }
 
+// Work in progress
 template <class T>
 void qsort_helper(vector<T> &vec, size_t start, size_t stop){
-  // If two elements swap maybe.
   // If one element return.
-  if(stop-start == 1) return;
-  else if(stop-start == 2){
+  if(stop-start == 0) return;
+  // If two elements swap maybe.
+  else if(stop-start == 1){
     if(vec[start] > vec[stop]){
       T temp = vec[start];
       vec[start] = vec[stop];
@@ -183,5 +185,60 @@ void qsort_helper(vector<T> &vec, size_t start, size_t stop){
 
   // Find the median of the first, middle, and last elements.
   size_t middle = (stop-start)/2;
+  size_t pivot = middle;
+
+  // Two ways for the start to be the pivot.
+  if(vec[start] <= vec[stop] && vec[start] >= vec[middle]) pivot = start;
+  if(vec[start] >= vec[stop] && vec[start] <= vec[middle]) pivot = start;
+
+  // Same for the end.
+  if(vec[stop] <= vec[start] && vec[stop] >= vec[middle]) pivot = stop;
+  if(vec[stop] >= vec[start] && vec[stop] <= vec[middle]) pivot = stop;
+
+  // If the pivot isn't the first element swap it with the first element.
+  if(pivot != start){
+    T temp = vec[start];
+    vec[start] = vec[pivot];
+    vec[pivot] = temp;
+  }
+
+  size_t left = pivot+1;
+  size_t right = stop;
+
+  partition(vec, pivot, left, right, stop);
+
+  qsort_helper(vec, start, left);
+  qsort_helper(vec, right, stop);
+  // 2 1 3 4 6
+  //     ?
+
 }
-*/
+
+// Work in progress.
+template <class T>
+void partition(vector<T> &vec, size_t pivot, size_t &left, size_t &right){
+
+  while(true){
+    // Find an element that is greater than the pivot.
+    while(vec[left] < vec[pivot]){
+      left++;
+    }
+    // Then find one less than the pivot.
+    while(vec[right] > vec[pivot]){
+      right--;
+    }
+
+    if(left > right){
+        if(left = right){
+
+        }
+        else{
+          // swap.
+          T temp = vec[left];
+
+          // decrement.
+          // check for equality
+        }
+    }
+  }
+}
