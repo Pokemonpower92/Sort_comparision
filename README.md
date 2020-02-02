@@ -2,7 +2,7 @@
 Compares various sorting algorithms between python and c++ implementations
 over an input range of 1 to 7000 elements.
 
-Three random sets of each interval are averaged to increase stochasticity.  
+The time to sort two random arrays of each input size are averaged to increase fidelity.  
 
 \- Python in production.  
 
