@@ -19,9 +19,16 @@ void s_sort(vector<T> &vec);
 template <class T>
 size_t sort_helper(vector<T> &vec, size_t index);
 
-// Future implementation.
-//template <class T>
-//void q_sort(vector<T> &vec);
+
+/*
+
+template <class T>
+void q_sort(vector<T> &vec);
+
+template <class T>
+void qsort_helper();
+
+*/
 
 // Merges two subarrays of vec back into place in vec.
 template <class T>
@@ -149,3 +156,32 @@ size_t sort_helper(vector<T> &vec, size_t index){
 
   return min;
 }
+
+/*
+// WIP
+template <class T>
+void q_sort(vector<T> &vec){
+  qsort_helper(vec, 0, vec.size()-1);
+  return;
+}
+
+template <class T>
+void qsort_helper(vector<T> &vec, size_t start, size_t stop){
+  // If two elements swap maybe.
+  // If one element return.
+  if(stop-start == 1) return;
+  else if(stop-start == 2){
+    if(vec[start] > vec[stop]){
+      T temp = vec[start];
+      vec[start] = vec[stop];
+      vec[stop] = temp;
+    }
+    return;
+  }
+  // If neither is true we need to select our pivot and
+  // then partition.
+
+  // Find the median of the first, middle, and last elements.
+  size_t middle = (stop-start)/2;
+}
+*/

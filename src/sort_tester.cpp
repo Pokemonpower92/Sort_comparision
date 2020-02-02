@@ -39,7 +39,7 @@ int main(int argc, char** argv){
       perror("./io/rand_input.txt");
     }
 
-    for(int i = 1; i != 701; i++){
+    for(int i = 1; i != 11; i++){
 
       // Average for each sort type.
       chrono::duration<double> stl_average;
@@ -50,13 +50,13 @@ int main(int argc, char** argv){
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
       // For each input size we have two lines to read then sort.
       // Finally, we average them.
-      for(int j = 1; j != 3; j++){
+      for(int j = 1; j != 2; j++){
         int num;
         vector<int> data;
         vector<int> to_sort;
 
         // Read in the data.
-        for(int z = 0; z != i*10; z++){
+        for(int z = 0; z != i*10000; z++){
             fin >> num;
             data.push_back(num);
         }
