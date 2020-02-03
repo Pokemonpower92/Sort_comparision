@@ -21,8 +21,11 @@ The time to sort two random arrays of each input size are averaged to increase f
    Fig 1. C++ Sort comparision.
    ![](https://github.com/Pokemonpower92/Sort_comparision/blob/master/graphs/Figure_1.png)  
 
-   Fig 2. Characteristic Better Performance of Insertion on smaller input sizes
-   ![](https://github.com/Pokemonpower92/Sort_comparision/blob/master/graphs/Figure_2.png)
+   Fig 2. Characteristic Better Performance of Insertion on smaller input sizes  
+   ![](https://github.com/Pokemonpower92/Sort_comparision/blob/master/graphs/Figure_2.png)  
+     
+   Fig 3. nlogn Sorts
+      ![](https://github.com/Pokemonpower92/Sort_comparision/blob/master/graphs/MvQvS.png)
 
 # TODO
 Implement quicksort for c++  
