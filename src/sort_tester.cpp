@@ -29,7 +29,7 @@ int main(int argc, char** argv){
     vector<double> stl_times;
     vector<double> merge_times;
     vector<double> insertion_times;
-    vector<double> selection_times;
+    vector<double> quick_times;
 
     ifstream fin;;
 
@@ -39,13 +39,13 @@ int main(int argc, char** argv){
       perror("./io/rand_input.txt");
     }
 
-    for(int i = 1; i != 701; i++){
+    for(int i = 1; i != 100; i++){
 
       // Average for each sort type.
       chrono::duration<double> stl_average;
       chrono::duration<double> merge_average;
       chrono::duration<double> insertion_average;
-      chrono::duration<double> selection_average;
+      chrono::duration<double> quick_average;
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
       // For each input size we have two lines to read then sort.
@@ -70,7 +70,7 @@ int main(int argc, char** argv){
         // For merge.
         chrono::time_point<chrono::system_clock> start, end;
         start = chrono::high_resolution_clock::now();
-        m_sort(data, to_sort, 0, data.size());
+        m_sort(to_sort, 0, to_sort.size());
         end = chrono::high_resolution_clock::now();
 
         // Calculate the time (in seconds) to do merge.
@@ -79,6 +79,7 @@ int main(int argc, char** argv){
         merge_average += interval;
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
         // For stl sort.
         to_sort = data;
 
@@ -94,7 +95,7 @@ int main(int argc, char** argv){
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-        // For insertion sort.
+       // For insertion sort.
         to_sort = data;
 
         start = chrono::high_resolution_clock::now();
@@ -109,14 +110,13 @@ int main(int argc, char** argv){
 
         // For selection sort.
         to_sort = data;
-
         start = chrono::high_resolution_clock::now();
-        s_sort(to_sort);
+        q_sort(to_sort);
         end = chrono::high_resolution_clock::now();
         // Calculate the time (in seconds) to do insertion.
         interval = end-start;
 
-        selection_average += interval;
+        quick_average += interval;
 
 
       }
@@ -125,12 +125,12 @@ int main(int argc, char** argv){
       double s = (stl_average.count())/2.0;
       double m = (merge_average.count())/2.0;
       double is = (insertion_average.count())/2.0;
-      double sl = (selection_average.count())/2.0;
+      double q = (quick_average.count())/2.0;
 
       stl_times.push_back(s);
       merge_times.push_back(m);
       insertion_times.push_back(is);
-      selection_times.push_back(sl);
+      quick_times.push_back(q);
     }
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     fin.close();
@@ -162,10 +162,11 @@ int main(int argc, char** argv){
     }
     fout.close();
 
-    // Selction file
-    fout.open("./benchmarking/selction_cpp.txt");
+
+    // Quick file
+    fout.open("./benchmarking/quick_cpp.txt");
     for(size_t i = 0; i != stl_times.size(); i++){
-      fout << selection_times[i] << endl;
+      fout << quick_times[i] << endl;
     }
     fout.close();
 
